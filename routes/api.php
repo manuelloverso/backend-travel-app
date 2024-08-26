@@ -27,3 +27,7 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('api')
     ->name('register');
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
