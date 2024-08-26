@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use App\Http\Requests\StoreTripRequest;
 use App\Http\Requests\UpdateTripRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
@@ -29,7 +31,34 @@ class TripController extends Controller
      */
     public function store(StoreTripRequest $request)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You are not logged in!'
+            ], 401);
+        }
+
+        $data = $request->validated();
+        $slug = Str::slug($request->name, '-');
+        $data['slug'] = $slug;
+
+        /* attach the user_id */
+        $data['user_id'] = $user->id;
+
+        $trip = Trip::create($data);
+
+        if ($trip) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Trip created successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Sorry, the trip wasn't created, try again later."
+            ], 500);
+        }
     }
 
     /**
