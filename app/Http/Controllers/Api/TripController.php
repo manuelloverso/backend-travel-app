@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Trip;
 use App\Http\Requests\StoreTripRequest;
 use App\Http\Requests\UpdateTripRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class TripController extends Controller
 {
@@ -15,7 +17,25 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+        $trips = $user->trips->sortByDesc('departure_date');
+        if (count($trips) > 0) {
+            return response()->json([
+                'success' => true,
+                'response' => $trips
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => 'No trips were found',
+            ]);
+        }
     }
 
     /**
@@ -35,7 +55,7 @@ class TripController extends Controller
         if (!$user) {
             return response()->json([
                 'success' => false,
-                'message' => 'You are not logged in!'
+                'message' => 'Your session expired, please login and try again.'
             ], 401);
         }
 
@@ -57,7 +77,7 @@ class TripController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => "Sorry, the trip wasn't created, try again later."
-            ], 500);
+            ]);
         }
     }
 
