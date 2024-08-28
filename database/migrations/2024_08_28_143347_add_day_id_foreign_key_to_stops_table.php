@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('day_id')
                 ->references('id')
                 ->on('days')
-                ->onDelete('set null');
+                ->onDelete('cascade');
         });
     }
 

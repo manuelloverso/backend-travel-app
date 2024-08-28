@@ -34,4 +34,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
 Route::get('trips', [TripController::class, 'index']);
+Route::get('trips/{trip}', [TripController::class, 'show']);
 Route::post('trip', [TripController::class, 'store']);

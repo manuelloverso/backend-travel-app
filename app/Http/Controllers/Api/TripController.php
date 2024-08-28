@@ -25,7 +25,7 @@ class TripController extends Controller
                 'response' => 'Your session expired, please login and try again.'
             ], 401);
         }
-        $trips = DB::table('trips')->where('user_id', $user->id)->orderBy('departure_date', 'desc')->get();
+        $trips = DB::table('trips')->where('user_id', $user->id)->orderBy('departure_date')->get();
         if (count($trips) > 0) {
             return response()->json([
                 'success' => true,
@@ -37,14 +37,6 @@ class TripController extends Controller
                 'response' => 'No trips were found',
             ]);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -85,9 +77,30 @@ class TripController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Trip $trip)
+    public function show($id)
     {
-        //
+        /* $user = User::find(1); */
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $trip = Trip::with('days')->where('id', $id)->first();
+
+        if ($trip) {
+            return response()->json([
+                'success' => true,
+                'response' => $trip
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => 'No trip found'
+            ]);
+        }
     }
 
     /**

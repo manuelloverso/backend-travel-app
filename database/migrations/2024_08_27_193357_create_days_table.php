@@ -16,7 +16,7 @@ return new class extends Migration
             $table->tinyInteger('day_number', false, true);
             $table->tinyInteger('rating', false, true)->nullable();
             $table->text('notes', 500)->nullable();
-            $table->$table->timestamps();
+            $table->timestamps();
         });
     }
 

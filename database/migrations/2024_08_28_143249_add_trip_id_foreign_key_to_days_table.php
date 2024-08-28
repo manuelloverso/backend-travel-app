@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('trip_id')
                 ->references('id')
                 ->on('trips')
-                ->onDelete('set null');
+                ->onDelete('cascade');
         });
     }
 
