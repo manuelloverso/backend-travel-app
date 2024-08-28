@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Day;
 
 class Trip extends Model
 {
@@ -21,5 +23,15 @@ class Trip extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get all of the days for the Trip
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function days(): HasMany
+    {
+        return $this->hasMany(Day::class);
     }
 }
