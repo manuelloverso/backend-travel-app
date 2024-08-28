@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class TripController extends Controller
 {
@@ -24,7 +25,7 @@ class TripController extends Controller
                 'response' => 'Your session expired, please login and try again.'
             ], 401);
         }
-        $trips = $user->trips->sortByDesc('departure_date');
+        $trips = DB::table('trips')->where('user_id', $user->id)->orderBy('departure_date', 'desc')->get();
         if (count($trips) > 0) {
             return response()->json([
                 'success' => true,
