@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('stops', function (Blueprint $table) {
             $table->id();
             $table->string('location', 50);
-            $table->string('slug', 50);
             $table->string('type', 50)->nullable();
             $table->string('address', 200)->nullable();
             $table->boolean('visited')->default(false);

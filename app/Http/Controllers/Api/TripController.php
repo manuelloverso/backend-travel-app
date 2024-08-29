@@ -79,8 +79,8 @@ class TripController extends Controller
      */
     public function show($id)
     {
-        /* $user = User::find(1); */
         $user = Auth::user();
+        $user = User::find(1);
         if (!$user) {
             return response()->json([
                 'success' => false,
@@ -88,7 +88,7 @@ class TripController extends Controller
             ], 401);
         }
 
-        $trip = Trip::with('days')->where('id', $id)->where('user_id', $user->id)->first();
+        $trip = Trip::with('days.stops')->where('id', $id)->where('user_id', $user->id)->first();
 
         if ($trip) {
             return response()->json([
