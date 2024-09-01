@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DayController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -36,3 +37,5 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::get('trips', [TripController::class, 'index']);
 Route::get('trips/{trip}', [TripController::class, 'show']);
 Route::post('trip', [TripController::class, 'store']);
+
+Route::post('day', [DayController::class, 'store']);

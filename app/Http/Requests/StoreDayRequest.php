@@ -22,6 +22,7 @@ class StoreDayRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'trip_id' => 'required|integer|exists:trips,id',
             'day_number' => 'required|integer|min:1|max:100',
             'rating' => 'nullable|integer|min:1|max:5',
             'notes' => 'nullable|string|max:500',

@@ -6,6 +6,7 @@ use App\Models\Day;
 use App\Http\Requests\StoreDayRequest;
 use App\Http\Requests\UpdateDayRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DayController extends Controller
 {
@@ -18,19 +19,36 @@ class DayController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreDayRequest $request)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $data = $request->validated();
+
+        /* attach the user_id */
+        $data['user_id'] = $user->id;
+
+        $day = Day::create($data);
+
+        if ($day) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Day created successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Sorry, the day wasn't created, try again later."
+            ]);
+        }
     }
 
     /**
