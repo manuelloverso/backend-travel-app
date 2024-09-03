@@ -6,6 +6,7 @@ use App\Models\Stop;
 use App\Http\Requests\StoreStopRequest;
 use App\Http\Requests\UpdateStopRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class StopController extends Controller
@@ -31,7 +32,29 @@ class StopController extends Controller
      */
     public function store(StoreStopRequest $request)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $data = $request->validated();
+
+        $stop = Stop::create($data);
+
+        if ($stop) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Stop created successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => "Sorry, the stop wasn't created, try again later."
+            ]);
+        }
     }
 
     /**

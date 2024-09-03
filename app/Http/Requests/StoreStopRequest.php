@@ -22,10 +22,11 @@ class StoreStopRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'day_id' => 'required|integer|exists:days,id',
             'location' => 'required|string|max:50',
             'type' => 'nullable|string|max:50',
             'address' => 'nullable|string|max:200',
-            'visited' => 'boolean',
+            'visited' => 'nullable|boolean',
             'rating' => 'nullable|integer|min:1|max:5',
             'notes' => 'nullable|string|max:500',
         ];

@@ -39,3 +39,5 @@ Route::get('trips/{trip}', [TripController::class, 'show']);
 Route::post('trip', [TripController::class, 'store']);
 
 Route::post('day', [DayController::class, 'store']);
+
+Route::post('stop', [DayController::class, 'store']);

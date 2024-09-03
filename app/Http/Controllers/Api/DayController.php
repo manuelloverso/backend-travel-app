@@ -33,15 +33,13 @@ class DayController extends Controller
 
         $data = $request->validated();
 
-        /* attach the user_id */
-        $data['user_id'] = $user->id;
-
         $day = Day::create($data);
 
         if ($day) {
             return response()->json([
                 'success' => true,
-                'message' => 'Day created successfully'
+                'message' => 'Day created successfully',
+                'day_id' => $day->id
             ]);
         } else {
             return response()->json([
