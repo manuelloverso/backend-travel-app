@@ -7,6 +7,7 @@ use App\Http\Requests\StoreStopRequest;
 use App\Http\Requests\UpdateStopRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class StopController extends Controller
@@ -84,8 +85,38 @@ class StopController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stop $stop)
+    public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $stop = Stop::find($id);
+
+        if (!$stop) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Stop not found.'
+            ]);
+        }
+
+
+        $was_deleted = $stop->delete();
+
+        if ($was_deleted) {
+            return response()->json([
+                'success' => true,
+                'response' => 'Stop deleted successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => 'Failed to delete the stop. Please try again later.'
+            ]);
+        }
     }
 }

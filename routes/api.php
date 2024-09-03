@@ -45,3 +45,4 @@ Route::delete('delete/trip/{id}', [TripController::class, 'destroy']);
 Route::post('day', [DayController::class, 'store']);
 
 Route::post('stop', [StopController::class, 'store']);
+Route::delete('delete/stop/{id}', [StopController::class, 'destroy']);
