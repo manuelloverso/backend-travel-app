@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Api\TripController;
+use App\Http\Controllers\Api\StopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,11 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 
 Route::get('trips', [TripController::class, 'index']);
 Route::get('trips/{trip}', [TripController::class, 'show']);
+
 Route::post('trip', [TripController::class, 'store']);
+Route::delete('delete/trip/{id}', [TripController::class, 'destroy']);
+
 
 Route::post('day', [DayController::class, 'store']);
 
-Route::post('stop', [DayController::class, 'store']);
+Route::post('stop', [StopController::class, 'store']);

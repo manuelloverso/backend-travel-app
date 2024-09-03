@@ -7,7 +7,6 @@ return [
             'type' => 'Stadium',
             'address' => 'Les Corts, 08028 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'It was a nice experience, we even visited the museum with all the trophies FC Barcelona won',
         ],
         [
@@ -16,7 +15,6 @@ return [
             'type' => 'Street',
             'address' => 'La Rambla, Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'A bustling street with lots of shops and restaurants',
         ],
         [
@@ -25,7 +23,6 @@ return [
             'type' => 'Church',
             'address' => 'Carrer de Mallorca, 401, 08013 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Stunning architecture, a must-see in Barcelona',
         ],
         [
@@ -34,7 +31,6 @@ return [
             'type' => 'Park',
             'address' => 'Carrer d\'Olot, 5, 08024 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Beautiful park designed by Gaudí with great views',
         ],
         [
@@ -43,7 +39,6 @@ return [
             'type' => 'Museum',
             'address' => 'Carrer Montcada, 15-23, 08003 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Interesting collection of Picasso’s early works',
         ],
         [
@@ -52,7 +47,6 @@ return [
             'type' => 'Neighborhood',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Charming old streets with historic buildings',
         ],
         [
@@ -61,7 +55,6 @@ return [
             'type' => 'Market',
             'address' => 'La Rambla, 91, 08001 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'A vibrant market with a variety of fresh produce and local delicacies',
         ],
         [
@@ -70,7 +63,6 @@ return [
             'type' => 'Building',
             'address' => 'Passeig de Gràcia, 43, 08007 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Another Gaudí masterpiece, known for its unique design',
         ],
         [
@@ -79,7 +71,6 @@ return [
             'type' => 'Castle',
             'address' => 'Ctra. de Montjuïc, 66, 08038 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Historical castle with panoramic views of the city',
         ],
         [
@@ -88,7 +79,6 @@ return [
             'type' => 'Fountain',
             'address' => 'Plaça de Carles Buïgas, 1, 08038 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Spectacular water and light show in the evenings',
         ],
         [
@@ -97,7 +87,6 @@ return [
             'type' => 'Neighborhood',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Historic center of Barcelona with medieval architecture',
         ],
         [
@@ -106,7 +95,6 @@ return [
             'type' => 'Neighborhood',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Trendy area with a vibrant nightlife and art scene',
         ],
         [
@@ -115,7 +103,6 @@ return [
             'type' => 'Amusement Park',
             'address' => 'Carrer del Tibidabo, 3-4, 08035 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Amusement park with stunning views of Barcelona',
         ],
         [
@@ -124,7 +111,6 @@ return [
             'type' => 'Theatre',
             'address' => 'La Rambla, 51-59, 08002 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Historic opera house with beautiful architecture',
         ],
         [
@@ -133,7 +119,6 @@ return [
             'type' => 'Concert Hall',
             'address' => 'Carrer del Palau de la Música, 4-6, 08003 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Stunning concert hall known for its modernist design',
         ],
         [
@@ -142,7 +127,6 @@ return [
             'type' => 'Neighborhood',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Diverse neighborhood with interesting shops and restaurants',
         ],
         [
@@ -151,7 +135,6 @@ return [
             'type' => 'Street',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Elegant street with high-end shops and architecture',
         ],
         [
@@ -160,7 +143,6 @@ return [
             'type' => 'Building',
             'address' => 'Passeig de Gràcia, 92, 08008 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Gaudí’s iconic building also known as La Pedrera',
         ],
         [
@@ -169,7 +151,6 @@ return [
             'type' => 'Hospital',
             'address' => 'Carrer de Sant Antoni Maria Claret, 167, 08025 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'A beautiful modernist building and former hospital',
         ],
         [
@@ -178,7 +159,6 @@ return [
             'type' => 'Museum',
             'address' => 'Palau Nacional, Parc de Montjuïc, s/n, 08038 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Museum with a vast collection of Catalan art',
         ],
         [
@@ -187,7 +167,6 @@ return [
             'type' => 'Zoo',
             'address' => 'Parc de la Ciutadella, 08003 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Zoo with a variety of animals and beautiful park',
         ],
         [
@@ -196,7 +175,6 @@ return [
             'type' => 'Park',
             'address' => 'Carrer de la Ronda de Sant Pere, 08003 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Lovely park with a lake, perfect for relaxing',
         ],
         [
@@ -205,7 +183,6 @@ return [
             'type' => 'Beach',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Popular beach with plenty of restaurants and bars nearby',
         ],
         [
@@ -214,7 +191,6 @@ return [
             'type' => 'Street',
             'address' => 'Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Wide avenue with high-end shops and interesting architecture',
         ],
         [
@@ -223,7 +199,6 @@ return [
             'type' => 'Museum',
             'address' => 'Plaça del Rei, 08002 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Museum showcasing the history of Barcelona',
         ],
         [
@@ -232,7 +207,6 @@ return [
             'type' => 'Theatre',
             'address' => 'La Rambla, 51-59, 08002 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Famous opera house with an elegant interior',
         ],
         [
@@ -241,7 +215,6 @@ return [
             'type' => 'Monument',
             'address' => 'Passeig de Lluís Companys, 08003 Barcelona, Spain',
             'visited' => true,
-            'rating' => 4,
             'notes' => 'Triumphal arch and a popular photo spot',
         ],
         [
@@ -250,7 +223,6 @@ return [
             'type' => 'Skyscraper',
             'address' => 'Avinguda Diagonal, 211, 08018 Barcelona, Spain',
             'visited' => true,
-            'rating' => 5,
             'notes' => 'Modern skyscraper with an impressive design',
         ],
     ]

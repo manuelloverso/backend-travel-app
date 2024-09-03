@@ -27,7 +27,6 @@ class StoreStopRequest extends FormRequest
             'type' => 'nullable|string|max:50',
             'address' => 'nullable|string|max:200',
             'visited' => 'nullable|boolean',
-            'rating' => 'nullable|integer|min:1|max:5',
             'notes' => 'nullable|string|max:500',
         ];
     }

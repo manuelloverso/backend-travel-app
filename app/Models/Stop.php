@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Stop extends Model
 {
     use HasFactory;
-    protected $fillable = ['day_id', 'location', 'slug', 'type', 'address', 'visited', 'rating', 'notes'];
+    protected $fillable = ['day_id', 'location', 'slug', 'type', 'address', 'visited',  'notes'];
 
     /**
      * Get the day that owns the Stop

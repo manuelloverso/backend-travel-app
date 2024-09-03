@@ -23,7 +23,7 @@ class StoreDayRequest extends FormRequest
     {
         return [
             'trip_id' => 'required|integer|exists:trips,id',
-            'day_number' => 'required|integer|min:1|max:100',
+            'day_number' => 'required|integer|min:1|max:30',
             'rating' => 'nullable|integer|min:1|max:5',
             'notes' => 'nullable|string|max:500',
         ];

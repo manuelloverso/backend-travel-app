@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TripController extends Controller
 {
@@ -80,7 +81,6 @@ class TripController extends Controller
     public function show($id)
     {
         $user = Auth::user();
-        $user = User::find(1);
         if (!$user) {
             return response()->json([
                 'success' => false,
@@ -122,8 +122,42 @@ class TripController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Trip $trip)
+    public function destroy($id)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $trip = Trip::find($id);
+
+        if (!$trip) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Trip not found.'
+            ]);
+        }
+
+        if ($trip->image) {
+            Storage::delete($trip->image);
+        }
+
+
+        $was_deleted = $trip->delete();
+
+        if ($was_deleted) {
+            return response()->json([
+                'success' => true,
+                'response' => 'Trip deleted successfully'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => 'Failed to delete the trip. Please try again later.'
+            ]);
+        }
     }
 }

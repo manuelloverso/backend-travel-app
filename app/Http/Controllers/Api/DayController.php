@@ -39,7 +39,6 @@ class DayController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Day created successfully',
-                'day_id' => $day->id
             ]);
         } else {
             return response()->json([

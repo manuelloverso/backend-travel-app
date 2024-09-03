@@ -26,7 +26,7 @@ class StoreTripRequest extends FormRequest
             'image' => 'nullable|image|max:5000',
             'destination' => 'nullable|string|max:50',
             'departure_date' => 'nullable|date|after_or_equal:today',
-            'trip_duration' => 'nullable|integer|min:1|max:100',
+            'trip_duration' => 'nullable|integer|min:1|max:30',
             'number_of_people' => 'nullable|integer|min:1|max:50',
             'available_budget' => 'nullable|integer|max:100000',
         ];

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('type', 50)->nullable();
             $table->string('address', 200)->nullable();
             $table->boolean('visited')->default(false);
-            $table->tinyInteger('rating', false, true)->nullable();
             $table->text('notes', 500)->nullable();
             $table->timestamps();
         });

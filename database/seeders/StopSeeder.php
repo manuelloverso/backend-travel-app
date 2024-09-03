@@ -22,7 +22,6 @@ class StopSeeder extends Seeder
             $newStop->type = $stopData['type'];
             $newStop->address = $stopData['address'];
             $newStop->visited = $stopData['visited'];
-            $newStop->rating = $stopData['rating'];
             $newStop->notes = $stopData['notes'];
             $newStop->save();
         }
