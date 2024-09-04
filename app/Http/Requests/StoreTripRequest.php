@@ -22,9 +22,9 @@ class StoreTripRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:50|unique:trips,name',
+            'name' => 'required|string|min:2|max:50',
             'image' => 'nullable|image|max:5000',
-            'destination' => 'nullable|string|max:50',
+            'destination' => 'required|string|max:50',
             'departure_date' => 'nullable|date|after_or_equal:today',
             'trip_duration' => 'nullable|integer|min:1|max:30',
             'number_of_people' => 'nullable|integer|min:1|max:50',

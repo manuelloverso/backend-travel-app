@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 100);
+            $table->string('weather', 100)->nullable();
             $table->tinyInteger('day_number', false, true);
             $table->tinyInteger('rating', false, true)->nullable();
             $table->text('notes', 500)->nullable();

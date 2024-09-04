@@ -102,21 +102,45 @@ class TripController extends Controller
             ]);
         }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Trip $trip)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTripRequest $request, Trip $trip)
+    public function update(UpdateTripRequest $request, $id)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $trip = Trip::find($id);
+
+        if (!$trip) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Trip not found.'
+            ]);
+        }
+
+        $data = $request->validated();
+        $slug = Str::slug($request->name, '-');
+        $data['slug'] = $slug;
+
+        $was_updated = $trip->update($data);
+
+        if ($was_updated) {
+            return response()->json([
+                'success' => true,
+                'response' => 'Trip updated successfully',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => "Trip wasn't updated, try again later.",
+            ]);
+        }
     }
 
     /**

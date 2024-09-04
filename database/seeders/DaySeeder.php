@@ -20,6 +20,8 @@ class DaySeeder extends Seeder
             $newDay = new  Day();
             $newDay->trip_id = $day['trip_id'];
             $newDay->day_number = $day['day_number'];
+            $newDay->title = $day['title'];
+            $newDay->weather = $day['weather'];
             $newDay->rating = $day['rating'];
             $newDay->notes = $day['notes'];
             $newDay->save();

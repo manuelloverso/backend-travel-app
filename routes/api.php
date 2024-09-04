@@ -19,8 +19,14 @@ use App\Http\Controllers\Api\StopController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+/* Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
+}); */
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
@@ -40,6 +46,7 @@ Route::get('trips/{trip}', [TripController::class, 'show']);
 
 Route::post('trip', [TripController::class, 'store']);
 Route::delete('delete/trip/{id}', [TripController::class, 'destroy']);
+Route::put('trip/{id}', [TripController::class, 'update']);
 
 
 Route::post('day', [DayController::class, 'store']);

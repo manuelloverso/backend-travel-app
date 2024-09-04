@@ -12,7 +12,7 @@ use App\Models\Stop;
 class Day extends Model
 {
     use HasFactory;
-    protected $fillable = ['trip_id', 'day_number', 'rating', 'notes'];
+    protected $fillable = ['trip_id', 'title', 'weather', 'day_number', 'rating', 'notes'];
 
     /**
      * Get the trip that owns the Day

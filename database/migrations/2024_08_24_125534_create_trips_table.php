@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('slug', 50);
             $table->string('image', 200)->nullable();
-            $table->string('destination', 50)->nullable();
+            $table->string('destination', 50);
             $table->date('departure_date')->nullable();
             $table->tinyInteger('trip_duration', false, true)->nullable();
             $table->tinyInteger('number_of_people', false, true)->nullable();
