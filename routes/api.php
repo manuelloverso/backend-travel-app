@@ -50,6 +50,7 @@ Route::put('trip/{id}', [TripController::class, 'update']);
 
 
 Route::post('day', [DayController::class, 'store']);
+Route::put('day/{id}', [DayController::class, 'update']);
 
 Route::post('stop', [StopController::class, 'store']);
 Route::delete('delete/stop/{id}', [StopController::class, 'destroy']);

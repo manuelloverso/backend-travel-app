@@ -57,19 +57,42 @@ class DayController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Day $day)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDayRequest $request, Day $day)
+    public function update(UpdateDayRequest $request, $id)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $day = Day::find($id);
+
+        if (!$day) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Day not found.'
+            ]);
+        }
+
+        $data = $request->validated();
+
+        $was_updated = $day->update($data);
+
+        if ($was_updated) {
+            return response()->json([
+                'success' => true,
+                'response' => 'Day updated successfully',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => "Day wasn't updated, try again later.",
+            ]);
+        }
     }
 
     /**
