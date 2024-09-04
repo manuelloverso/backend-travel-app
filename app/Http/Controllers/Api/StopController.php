@@ -77,9 +77,40 @@ class StopController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStopRequest $request, Stop $stop)
+    public function update(UpdateStopRequest $request, $id)
     {
-        //
+        $user = Auth::user();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Your session expired, please login and try again.'
+            ], 401);
+        }
+
+        $stop = Stop::find($id);
+
+        if (!$stop) {
+            return response()->json([
+                'success' => false,
+                'response' => 'Stop not found.'
+            ]);
+        }
+
+        $data = $request->validated();
+
+        $was_updated = $stop->update($data);
+
+        if ($was_updated) {
+            return response()->json([
+                'success' => true,
+                'response' => 'Stop updated successfully',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => "Stop wasn't updated, try again later.",
+            ]);
+        }
     }
 
     /**

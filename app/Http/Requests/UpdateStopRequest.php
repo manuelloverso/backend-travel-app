@@ -11,7 +11,7 @@ class UpdateStopRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class UpdateStopRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'day_id' => 'required|integer|exists:days,id',
+            'location' => 'required|string|max:50',
+            'type' => 'nullable|string|max:50',
+            'address' => 'nullable|string|max:200',
+            'visited' => 'nullable|boolean',
+            'notes' => 'nullable|string|max:500',
         ];
     }
 }

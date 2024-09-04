@@ -54,3 +54,4 @@ Route::put('day/{id}', [DayController::class, 'update']);
 
 Route::post('stop', [StopController::class, 'store']);
 Route::delete('delete/stop/{id}', [StopController::class, 'destroy']);
+Route::put('stop/{id}', [StopController::class, 'update']);
