@@ -46,7 +46,7 @@ Route::get('trips/{trip}', [TripController::class, 'show']);
 
 Route::post('trip', [TripController::class, 'store']);
 Route::delete('delete/trip/{id}', [TripController::class, 'destroy']);
-Route::put('trip/{id}', [TripController::class, 'update']);
+Route::post('edit-trip/{id}', [TripController::class, 'update']);
 
 
 Route::post('day', [DayController::class, 'store']);

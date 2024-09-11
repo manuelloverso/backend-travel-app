@@ -57,6 +57,13 @@ class TripController extends Controller
         $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
 
+        if ($request->has('image')) {
+            $img_path = Storage::put('uploads', $data['image']);
+            $data['image'] = 'storage/' . $img_path;
+        } else {
+            $data['image'] = 'images/default.jpg';
+        }
+
         /* attach the user_id */
         $data['user_id'] = $user->id;
 
@@ -65,7 +72,8 @@ class TripController extends Controller
         if ($trip) {
             return response()->json([
                 'success' => true,
-                'message' => 'Trip created successfully'
+                'message' => 'Trip created successfully',
+                'trip' => $trip
             ]);
         } else {
             return response()->json([
@@ -128,12 +136,24 @@ class TripController extends Controller
         $slug = Str::slug($request->name, '-');
         $data['slug'] = $slug;
 
+        if ($request->has('image')) {
+            /* delete the old img */
+            if (str_starts_with($trip->image, 'storage')) {
+                Storage::delete(str_replace('storage/', '', $trip->image));
+            }
+
+            $img_path = Storage::put('uploads', $data['image']);
+            $data['image'] = 'storage/' . $img_path;
+        }
+
         $was_updated = $trip->update($data);
 
         if ($was_updated) {
+            $trip->refresh();
             return response()->json([
                 'success' => true,
                 'response' => 'Trip updated successfully',
+                'trip' => $trip
             ]);
         } else {
             return response()->json([
@@ -165,8 +185,8 @@ class TripController extends Controller
             ]);
         }
 
-        if ($trip->image) {
-            Storage::delete($trip->image);
+        if (str_starts_with($trip->image, 'storage')) {
+            Storage::delete(str_replace('storage/', '', $trip->image));
         }
 
 
